@@ -1,0 +1,22 @@
+@import url(./__name/profile-info__name.css);
+@import url(./__title/profile-info__title.css);
+@import url(./__job/profile-info__job.css);
+@import url(./__edit-button/profile-info__edit-button.css);
+@import url(./__add-button/profile-info__add-button.css);
+
+.profile-info {
+    width: 700px;   
+    box-sizing: border-box;
+    align-items: center;
+    padding-left: 30px;
+  }
+  
+  @media screen and (max-width: 670px) {
+    .profile-info {
+        max-width: 282px;
+        flex-direction: column;
+        padding-left: 0;
+        padding-bottom: 36px;
+        align-items: center;
+    }
+  }

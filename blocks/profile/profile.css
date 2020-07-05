@@ -1,0 +1,25 @@
+@import url(./__photo/profile__photo.css);
+
+.profile{
+  box-sizing: border-box;
+  margin-top: 35px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  }
+
+
+  @media screen and (max-width: 768px) {
+      .profile{
+      margin-bottom: 36px;
+  }
+  } 
+
+  @media screen and (max-width: 530px) {
+      .profile{
+      max-width: 282px;
+      flex-direction: column;
+  }
+  } 

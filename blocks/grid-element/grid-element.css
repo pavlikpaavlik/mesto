@@ -1,0 +1,10 @@
+@import url(./__photo/grid-element__photo.css);
+@import url(./__info/grid-element__info.css);
+@import url(./__title/grid-element__title.css);
+@import url(./__like-button/grid-element__like-button.css);
+
+.grid-element {
+    border-radius: 10px;
+    background-color: #FFFFFF;
+  }
+  
