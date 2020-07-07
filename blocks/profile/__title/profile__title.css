@@ -1,4 +1,4 @@
-.profile-info__title {
+.profile__title {
   width: 100%;
   margin: 0;
   max-width: 300px;
@@ -12,14 +12,14 @@
 }
 
 @media screen and (max-width: 900px) {
-  .profile-info__title {
+  .profile__title {
     font-size: 30px;
     max-width: 220px;
 }
 } 
     
 @media screen and (max-width: 768px) {
-   .profile-info__title {
+   .profile__title {
     font-size: 27px;
     max-width: 200px;
 }
