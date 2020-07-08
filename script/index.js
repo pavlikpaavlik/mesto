@@ -9,7 +9,7 @@ let inputName = form.querySelector('.popup__input_value_name');
 let inputJob = form.querySelector('.popup__input_value_job');
 
 function togglePopup() {
-    if (popup.classList.contains('popup_opened')) {
+    if (!popup.classList.contains('popup_opened')) {
         inputName.value = profileName.textContent;    
         inputJob.value = profileJob.textContent;
     }
