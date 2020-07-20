@@ -26,73 +26,19 @@
       </section>
       <section class="elements page__section">
         <ul class="grid-elements">
-            <li class="grid-element">
-                <img class="grid-element__photo" src="./images/karachaevsk.jpg" alt='Карачаевск'>
-                <div class="grid-element__info">
-                  <h2 class="grid-element__title">
-                    Карачаевск
-                  </h2>
-                  <button class="grid-element__like-button"></button>
-                </div>
-            </li>
-            <li class="grid-element">
-                <img class="grid-element__photo" src="./images/Elbrus.jpg" alt='Гора Эльбрус'>
-                <div class="grid-element__info">
-                  <h2 class="grid-element__title">
-                    Гора Эльбрус
-                  </h2>
-                  <button class="grid-element__like-button"></button>
-                </div>
-            </li>
-            <li class="grid-element">
-                <img class="grid-element__photo" src="./images/dombai.jpg" alt='Домбай'>
-                <div class="grid-element__info">
-                  <h2 class="grid-element__title">
-                    Домбай
-                  </h2>
-                  <button class="grid-element__like-button"></button>
-                </div>
-            </li>
-            <li class="grid-element">
-                <img class="grid-element__photo" src="./images/Elbrus.jpg" alt='Гора Эльбрус'>
-                <div class="grid-element__info">
-                  <h2 class="grid-element__title">
-                    Гора Эльбрус
-                  </h2>
-                  <button class="grid-element__like-button"></button>
-                </div>
-            </li>
-            <li class="grid-element">
-                <img class="grid-element__photo" src="./images/dombai.jpg" alt='Домбай'>
-                <div class="grid-element__info">
-                  <h2 class="grid-element__title">
-                    Домбай
-                  </h2>
-                  <button class="grid-element__like-button"></button>
-                </div>
-            </li>
-            <li class="grid-element">
-                <img class="grid-element__photo" src="./images/karachaevsk.jpg" alt='Карачаево-Черкесия'>
-                <div class="grid-element__info">
-                  <h2 class="grid-element__title">
-                    Карачаево-Черкесия
-                  </h2>
-                  <button class="grid-element__like-button"></button>
-                </div>
-            </li>
         </ul>
       </section>
     </main>
       <footer class="footer page__section">
         <p class="footer__copyright">&copy;2020 Mesto Russia</p>
       </footer>
-      <div class="popup">
+      <div class="popup popup_edit-profile">
         <div class="popup__container">
           <button class="popup__close-button" type="button"></button>
           <h2 class="popup__title">
            Редактировать профиль
           </h2>
-          <form action="#" name="form" class="popup__form">
+          <form action="#" name="form-profile" class="popup__form">
             <input type="text" class="popup__input popup__input_value_name" name="name" placeholder="Имя">
             <input type="text" class="popup__input popup__input_value_job" name="job" placeholder="Профессия">
             <button class="popup__save" type="submit" name="submit">Сохранить</button>
@@ -100,5 +46,33 @@
         </div>
       </div>
   </div>
+  <div class="popup popup_new-place">
+    <div class="popup__container popup__container_theme_place">
+      <button class="popup__close-button" type="button"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form action ="#" name="popup-place" class="popup__form">
+          <input type="text" name="place" class="popup__input popup__input_value_place" placeholder="Название">
+          <input type="url" name="link" class="popup__input popup__input_value_link" placeholder="Ссылка на картинку">
+          <input type="submit" class="popup__save" value="Создать">
+      </form>
+    </div>
+  </div>
+  <div class="popup popup_photo-zoom">
+    <div class="popup__container-place">
+      <img src="" class="popup__photo" alt="">
+      <p class="popup__place"></p>
+      <button class="popup__close-button"></button>
+    </div>
+  </div>
+  <template class="grid-elements__template">
+    <li class="grid-element">
+      <img src="" class="grid-element__photo" alt="">
+      <div class="grid-element__trash"></div>
+      <div class="grid-element__info">
+        <h3 class="grid-element__title"></h3>
+        <button class="grid-element__like-button" type="button"></button>
+      </div>
+    </li>
+  </template>
   <script src="./script/index.js"></script>
 </body>

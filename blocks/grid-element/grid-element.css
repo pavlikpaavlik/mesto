@@ -2,8 +2,11 @@
 @import url(./__info/grid-element__info.css);
 @import url(./__title/grid-element__title.css);
 @import url(./__like-button/grid-element__like-button.css);
+@import url(./__trash/grid-element__trash.css);
+@import url(./__like-button/_theme_black/grid-element__like-button_theme_black.css);
 
 .grid-element {
+    position: relative;
     border-radius: 10px;
     background-color: #FFFFFF;
   }
