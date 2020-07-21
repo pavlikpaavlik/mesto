@@ -8,3 +8,9 @@
       width: 90%;
     }
   }
+
+  @media screen and (max-width: 640px) {
+    .page__section {
+      width: 75%;
+    }
+  }

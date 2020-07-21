@@ -8,4 +8,17 @@
     list-style-type: none;
   }
 
+  @media screen and (max-width: 900px) {
+    .elements {
+      max-width: 582px;
+  }
+  }
+
+  @media screen and (max-width: 600px) {
+    .grid-elements {
+      max-width: 282px;
+      margin: auto;
+  }
+  }
+
   
