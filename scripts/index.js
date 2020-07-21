@@ -65,6 +65,7 @@ const openProfilePopup = function() {
     const elementPhoto = element.querySelector('.grid-element__photo');
     element.querySelector('.grid-element__title').textContent = item.name;
     elementPhoto.src = item.link;
+    elementPhoto.alt = item.name;
     elementPhoto.addEventListener('click', () => photoZoomPopup(item));
   
     element.querySelector('.grid-element__trash').addEventListener('click', deleteElement);
