@@ -163,3 +163,4 @@ const closePopupEscHandler = (evt) => {
 };
 
 document.addEventListener('keyup', closePopupEscHandler);
+document.removeEventListener('keyup', closePopupEscHandler);

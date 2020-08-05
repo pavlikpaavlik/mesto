@@ -38,8 +38,10 @@ const checkInputValidity = (formItem, inputItem, inputErrorClass, errorClass) =>
   const changeButtonState =(inputList, buttonItem, inactiveButtonClass) => {
       if (hasInvalidInput(inputList)) {
         buttonItem.classList.add(inactiveButtonClass);
+        buttonItem.disabled = true;
       } else {
         buttonItem.classList.remove(inactiveButtonClass);
+        buttonItem.disabled = false;
       }
   };
 
