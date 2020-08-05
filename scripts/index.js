@@ -137,4 +137,29 @@ const openProfilePopup = function() {
   
   form.addEventListener('submit', formSubmitHandler);
 
+// закрытие кликом и esc
 
+const popupList = Array.from(document.querySelectorAll('.popup'));
+popupList.forEach((item) => {
+  item.addEventListener('click', (evt) => {
+    if (evt.target.classList.contains('popup_opened')){
+      popupsToggle(item);
+    }
+  });
+});
+
+const popupIsOpened = (popupItem) => {
+  return popupItem.classList.contains('popup_opened');
+};
+
+const closePopupEscHandler = (evt) => {
+  evt.preventDefault();
+  if (evt.key == "Escape") {
+    const popupItem = popupList.find(popupItem => popupIsOpened(popupItem));
+    if (popupItem) {
+      popupsToggle(popupItem);
+    }
+  }
+};
+
+document.addEventListener('keyup', closePopupEscHandler);
