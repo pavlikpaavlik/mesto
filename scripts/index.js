@@ -36,8 +36,14 @@ const openProfilePopup = function() {
   });
   
   function popupsToggle (popup) {
+    if (popupIsOpened(popup)) {
+      removeEscListener();
+    } else {
+      addEscListener();
+    }
     popup.classList.toggle('popup_opened');
   }
+
   popupAddButton.addEventListener ('click', function () {
     inputPlace.value = '';
     inputLink.value = '';
@@ -162,5 +168,10 @@ const closePopupEscHandler = (evt) => {
   }
 };
 
-document.addEventListener('keyup', closePopupEscHandler);
+function addEscListener () {
+  document.addEventListener('keyup', closePopupEscHandler);
+}
+
+function removeEscListener () {
 document.removeEventListener('keyup', closePopupEscHandler);
+}
