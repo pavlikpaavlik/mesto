@@ -1,3 +1,8 @@
+import {initialCards} from './initial-cards.js';
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+import {settings, popupList, popupIsOpened, closePopupEscHandler, addEscListener, removeEscListener} from './utils.js';
+
 const popup = document.querySelector('.popup');
 const form = popup.querySelector('.popup__form');
 const profileName = document.querySelector('.profile__title');
@@ -19,6 +24,12 @@ const popupClosePhotoZoom = popupPhotoZoom.querySelector ('.popup__close-button'
 const inputPlace = popupNewPlace.querySelector('.popup__input_value_place');
 const inputLink = popupNewPlace.querySelector('.popup__input_value_link');
 const placeFormElement = popupNewPlace.querySelector('.popup__container_theme_place');
+
+const popupEditProfileValidator = new FormValidator(settings, popupEditProfile);
+const popupNewPlaceValidator = new FormValidator(settings, popupNewPlace);
+
+popupEditProfileValidator.enableValidation();
+popupNewPlaceValidator.enableValidation();
 
 const openProfilePopup = function() {
     if (!popupEditProfile.classList.contains('popup_opened')) {
@@ -65,53 +76,21 @@ const openProfilePopup = function() {
   const elementTitle = elementsList.querySelector('.grid-element__title');
   const popupPhoto = popupPhotoZoom.querySelector ('.popup__photo');
   const popupName = popupPhotoZoom.querySelector ('.popup__place');
-  
-  function addElement (item) {
-    const element = elementsTemplate.content.cloneNode(true);
-    const elementPhoto = element.querySelector('.grid-element__photo');
-    element.querySelector('.grid-element__title').textContent = item.name;
-    elementPhoto.src = item.link;
-    elementPhoto.alt = item.name;
-    elementPhoto.addEventListener('click', () => photoZoomPopup(item));
-  
-    element.querySelector('.grid-element__trash').addEventListener('click', deleteElement);
-    element.querySelector('.grid-element__like-button').addEventListener('click', likeElement);
-
-    return element;
-  }
 
   function renderElement(item) {
-    elementsList.prepend(addElement(item));
+    const card = addCard(item);
+    elementsList.prepend(addCard(card));
   }
 
   initialCards.forEach (function (item) {
     renderElement(item);
   });
   
-  //попап с фоткой
-  function photoZoomPopup (item) {
-  
-    const photo = item.link;
-    const place = item.name;
-  
-    popupPhoto.src = photo;
-    popupName.textContent = place;
-  
-    popupsToggle (popupPhotoZoom);
-    }
-  
-  // Удалить карточку
-  function deleteElement (evt) {
-    const element = evt.target.closest('.grid-element');
-    element.remove();
+  function addCard(item) {
+    const card = new Card (item.name, item.link, '.template-card');
+    return card.generateCard();
   }
-  // лайк
-  function likeElement (evt) {
-    const like = evt.target.closest('.grid-element__like-button');
-    like.classList.toggle('grid-element__like-button_theme_black');
-  }
-  
-  //Добавление карточки
+
   function handlerAddElementSubmit(evt) {
     evt.preventDefault();
   
@@ -142,36 +121,3 @@ const openProfilePopup = function() {
   }
   
   form.addEventListener('submit', formSubmitHandler);
-
-// закрытие кликом и esc
-
-const popupList = Array.from(document.querySelectorAll('.popup'));
-popupList.forEach((item) => {
-  item.addEventListener('click', (evt) => {
-    if (evt.target.classList.contains('popup_opened')){
-      popupsToggle(item);
-    }
-  });
-});
-
-const popupIsOpened = (popupItem) => {
-  return popupItem.classList.contains('popup_opened');
-};
-
-const closePopupEscHandler = (evt) => {
-  evt.preventDefault();
-  if (evt.key == "Escape") {
-    const popupItem = popupList.find(popupItem => popupIsOpened(popupItem));
-    if (popupItem) {
-      popupsToggle(popupItem);
-    }
-  }
-};
-
-function addEscListener () {
-  document.addEventListener('keyup', closePopupEscHandler);
-}
-
-function removeEscListener () {
-document.removeEventListener('keyup', closePopupEscHandler);
-}
