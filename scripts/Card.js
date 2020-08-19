@@ -31,17 +31,17 @@ export default class Card {
         return this._element
     }
     
-    _likeCard (evt) {
+    _likeCard(evt) {
         const like = evt.target.closest('.grid-element__like-button');
         like.classList.toggle('grid-element__like-button_theme_black');
       }
 
-    _deleteCard (evt) {
-        const element = evt.target.closest('.grid-element');
+    _deleteCard(evt) {
+        this._element = evt.target.closest('.grid-element');
         this._element.remove();
       }
 
-    _photoZoomPopup () {
+    _photoZoomPopup() {
         popupPhoto.src = this._link;
         popupName.textContent = this._name;
         popupsToggle(popupPhotoZoom);
