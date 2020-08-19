@@ -77,32 +77,23 @@ const openProfilePopup = function() {
   const popupPhoto = popupPhotoZoom.querySelector ('.popup__photo');
   const popupName = popupPhotoZoom.querySelector ('.popup__place');
 
-  function renderElement(item) {
-    const card = addCard(item);
-    elementsList.prepend(addCard(card));
-  }
-
   initialCards.forEach (function (item) {
-    renderElement(item);
+    const card = new Card (item.name, item.link, '.template-card');
+    const cardElement = card.generateCard();
+    
+    elementsList.append(cardElement);
   });
   
-  function addCard(item) {
-    const card = new Card (item.name, item.link, '.template-card');
-    return card.generateCard();
+  function addCard(card) {
+    elementsList.prepend(card);
   }
 
   function handlerAddElementSubmit(evt) {
     evt.preventDefault();
   
-    const name = inputPlace.value;
-    const link = inputLink.value;
-    const item = {
-      name: name,
-      link: link
-    };
-    inputPlace.value = '';
-    inputLink.value = '';
-    renderElement(item);
+    const card = new Card (inputPlace.value, inputLink.value, '.template-card');
+    const cardElement = card.generateCard();
+    addCard(cardElement);
   
     popupsToggle(popupNewPlace);
   }
