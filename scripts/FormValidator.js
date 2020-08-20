@@ -49,7 +49,6 @@ _checkInputValidity = (inputItem) => {
 
   _setEventListeners() {
     const inputList = Array.from(this._formSelector.querySelectorAll(this._inputSelector));
-    const buttonItem = this._formSelector.querySelector('.popup__save');
     this._changeButtonState(inputList);
     inputList.forEach((inputItem) => {
         inputItem.addEventListener('input', () => {
@@ -60,6 +59,9 @@ _checkInputValidity = (inputItem) => {
 };
 
 enableValidation() {
+    this._formSelector.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    });
     this._setEventListeners();
   }
 }

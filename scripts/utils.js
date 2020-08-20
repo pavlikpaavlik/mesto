@@ -1,5 +1,3 @@
-export {settings, popupList, popupIsOpened, popupsToggle, closePopupEscHandler, addEscListener, removeEscListener};
-
 const settings = ({
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
@@ -49,3 +47,5 @@ function addEscListener () {
 function removeEscListener () {
 document.removeEventListener('keyup', closePopupEscHandler);
 }
+
+export {settings, popupList, popupIsOpened, popupsToggle, closePopupEscHandler, addEscListener, removeEscListener};

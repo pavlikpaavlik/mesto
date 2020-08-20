@@ -1,7 +1,7 @@
 import {initialCards} from './initial-cards.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
-import {settings, popupList, popupIsOpened, closePopupEscHandler, addEscListener, removeEscListener} from './utils.js';
+import {settings, popupIsOpened, addEscListener, removeEscListener} from './utils.js';
 
 const popup = document.querySelector('.popup');
 const form = popup.querySelector('.popup__form');
@@ -72,10 +72,6 @@ const openProfilePopup = function() {
   //массив
   
   const elementsList = document.querySelector('.grid-elements');
-  const elementsTemplate = document.querySelector('.template-card');
-  const elementTitle = elementsList.querySelector('.grid-element__title');
-  const popupPhoto = popupPhotoZoom.querySelector ('.popup__photo');
-  const popupName = popupPhotoZoom.querySelector ('.popup__place');
 
   initialCards.forEach (function (item) {
     const card = new Card (item.name, item.link, '.template-card');

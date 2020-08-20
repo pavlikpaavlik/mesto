@@ -37,8 +37,8 @@ export default class Card {
       }
 
     _deleteCard(evt) {
-        this._element = evt.target.closest('.grid-element');
-        this._element.remove();
+        evt.target.closest('.grid-element').remove(); // при this._element.remove(); ломается delete, не понимаю в чем беда
+        this._element = null;
       }
 
     _photoZoomPopup() {
