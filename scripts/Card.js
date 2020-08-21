@@ -36,8 +36,8 @@ export default class Card {
         like.classList.toggle('grid-element__like-button_theme_black');
       }
 
-    _deleteCard(evt) {
-        evt.target.closest('.grid-element').remove(); // при this._element.remove(); ломается delete, не понимаю в чем беда
+    _deleteCard() {
+        this._element.remove(); 
         this._element = null;
       }
 
@@ -53,7 +53,7 @@ export default class Card {
             this._photoZoomPopup();
         });
     
-        this._element.querySelector('.grid-element__trash').addEventListener('click', this._deleteCard);
+        this._element.querySelector('.grid-element__trash').addEventListener('click', () => this._deleteCard());
         this._element.querySelector('.grid-element__like-button').addEventListener('click', this._likeCard);
     }
 }

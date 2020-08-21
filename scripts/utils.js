@@ -10,9 +10,9 @@ const settings = ({
   // закрытие кликом и esc
 function popupsToggle (popup) {
     if (popupIsOpened(popup)) {
-      removeEscListener();
+      document.removeEventListener('keyup', closePopupEscHandler); 
     } else {
-      addEscListener();
+      document.addEventListener('keyup', closePopupEscHandler);
     }
     popup.classList.toggle('popup_opened');
 }
@@ -40,12 +40,4 @@ const closePopupEscHandler = (evt) => {
   }
 };
 
-function addEscListener () {
-  document.addEventListener('keyup', closePopupEscHandler);
-}
-
-function removeEscListener () {
-document.removeEventListener('keyup', closePopupEscHandler);
-}
-
-export {settings, popupList, popupIsOpened, popupsToggle, closePopupEscHandler, addEscListener, removeEscListener};
+export {settings, popupList, popupIsOpened, popupsToggle, closePopupEscHandler};

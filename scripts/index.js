@@ -1,7 +1,7 @@
 import {initialCards} from './initial-cards.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
-import {settings, popupIsOpened, addEscListener, removeEscListener} from './utils.js';
+import {settings, popupsToggle} from './utils.js';
 
 const popup = document.querySelector('.popup');
 const form = popup.querySelector('.popup__form');
@@ -45,15 +45,6 @@ const openProfilePopup = function() {
   popupCloseProfile.addEventListener ('click', function () {
     popupsToggle(popupEditProfile);
   });
-  
-  function popupsToggle (popup) {
-    if (popupIsOpened(popup)) {
-      removeEscListener();
-    } else {
-      addEscListener();
-    }
-    popup.classList.toggle('popup_opened');
-  }
 
   popupAddButton.addEventListener ('click', function () {
     inputPlace.value = '';
