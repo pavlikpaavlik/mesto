@@ -20,10 +20,10 @@ function addCard(link, name) {
   return cardElement;
 }
 
-const CardList = new Section({
+const cardList = new Section({
   items: initialCards,
   renderer: (item) => {
-    CardList.addItem(addCard(item.link, item.name));
+    cardList.addItem(addCard(item.link, item.name));
   } 
 }, '.grid-elements'); 
 
@@ -43,7 +43,7 @@ const profilePopup = new PopupWithForm(popupEditProfile, () => {
 profilePopup.setEventListeners();
 
 const newPlacePopup = new PopupWithForm (popupNewPlace, () => {
-    CardList.addItem(addCard(inputLink.value, inputPlace.value));
+    cardList.addItem(addCard(inputLink.value, inputPlace.value));
     newPlacePopup.close();
   });
 newPlacePopup.setEventListeners();
@@ -52,14 +52,15 @@ const handleCardClick = (link, name) => {
   popupWithPhoto.open(link, name);
 }
 
-CardList.renderItems();
+cardList.renderItems();
   
 popupEditButton.addEventListener('click', () => {
   profilePopup.open();
-  popupEditProfileValidator.enableValidation();
+  const userBio = userInfo.getUserInfo();
+  inputName.value = userBio.name;
+  inputJob.value = userBio.job;
 });
 
 popupAddButton.addEventListener('click', () => {
   newPlacePopup.open();
-  popupNewPlaceValidator.enableValidation();
 });
