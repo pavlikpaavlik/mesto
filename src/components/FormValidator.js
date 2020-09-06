@@ -8,27 +8,27 @@ constructor(settings, formSelector) {
     this._errorClass = settings.errorClass;
   }
 
-  _showInputError = (inputItem, errorMessage) => {
+  _showInputError(inputItem, errorMessage)  {
       const errorItem = this._formSelector.querySelector(`#${inputItem.id}-error`);
       inputItem.classList.add(this._inputErrorClass);
       errorItem.textContent = errorMessage;
       errorItem.classList.add(this._errorClass);
   };
 
-  _hasInvalidInput = (inputList) => {
+  _hasInvalidInput(inputList) {
       return inputList.some((inputItem) => {
           return !inputItem.validity.valid;
       });
   };
 
-  _hideInputError = (inputItem) => {
+  _hideInputError(inputItem) {
     const errorItem = this._formSelector.querySelector(`#${inputItem.id}-error`);
     inputItem.classList.remove(this._inputErrorClass);
     errorItem.classList.remove(this._errorClass);
     errorItem.textContent = '';
 };
 
-_checkInputValidity = (inputItem) => {
+_checkInputValidity(inputItem) {
     if (!inputItem.validity.valid) {
         this._showInputError(inputItem, inputItem.validationMessage);
     } else {
@@ -36,7 +36,7 @@ _checkInputValidity = (inputItem) => {
     }
 };
 
-  _changeButtonState =(inputList) => {
+  _changeButtonState(inputList) {
       const buttonItem = this._formSelector.querySelector(this._submitButtonSelector);
       if (this._hasInvalidInput(inputList)) {
         buttonItem.classList.add(this._inactiveButtonClass);

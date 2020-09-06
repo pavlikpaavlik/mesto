@@ -1,14 +1,9 @@
-import {popupsToggle} from './utils.js';
-
-const popupPhotoZoom = document.querySelector('.popup_photo-zoom');
-const popupPhoto = popupPhotoZoom.querySelector ('.popup__photo');
-const popupName = popupPhotoZoom.querySelector ('.popup__place');
-
 export default class Card {
-    constructor(name, link, cardSelector) {
+    constructor(link, name, cardSelector, handleCardClick) {
         this._name = name;
         this._link = link;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -24,7 +19,8 @@ export default class Card {
         this._element = this._getTemplate();
         this._setEventListeners();
         const elementPhoto = this._element.querySelector('.grid-element__photo');
-        this._element.querySelector('.grid-element__title').textContent = this._name;
+        const elementName = this._element.querySelector('.grid-element__title');
+        elementName.textContent = this._name;
         elementPhoto.src = this._link;
         elementPhoto.alt = this._name;
 
@@ -41,16 +37,9 @@ export default class Card {
         this._element = null;
       }
 
-    _photoZoomPopup() {
-        popupPhoto.src = this._link;
-        popupName.textContent = this._name;
-        popupsToggle(popupPhotoZoom);
-    }
-
     _setEventListeners() {
-        this._element.querySelector('.grid-element__photo').addEventListener('click', (evt) => {
-            evt.preventDefault();
-            this._photoZoomPopup();
+        this._element.querySelector('.grid-element__photo').addEventListener('click', () => {
+            this._handleCardClick(this._link, this._name);
         });
     
         this._element.querySelector('.grid-element__trash').addEventListener('click', () => this._deleteCard());
