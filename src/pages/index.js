@@ -59,8 +59,10 @@ popupEditButton.addEventListener('click', () => {
   const userBio = userInfo.getUserInfo();
   inputName.value = userBio.name;
   inputJob.value = userBio.job;
+  popupEditProfileValidator.resetValidation();
 });
 
 popupAddButton.addEventListener('click', () => {
   newPlacePopup.open();
+  popupNewPlaceValidator.resetValidation();
 });
