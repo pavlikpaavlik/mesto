@@ -1,38 +1,48 @@
 export default class Popup {
-    constructor(popupSelector) {
-        this._popup = popupSelector;
-        this._closeButton = this._popup.querySelector('.popup__close-button');
+	constructor(popupSelector) {
+		this._popupSelector = popupSelector;
+		this._closeButton = this._popupSelector.querySelector('.popup__close-button');
+		this._submitButton = this._popupSelector.querySelector('.popup__save');
+		this._handlerEscClose = this._handlerEscClose.bind(this);
+	}
 
-    }
+	_handlerEscClose(evt) {
+		if (evt.key === 'Escape') {
+			this.close();
+		}
+	}
 
-    _closePopupEscHandler(evt) {
-        if (evt.key === 'Escape') {
-            this.close();
-        }
-    }
+	_closeByOverlay(evt) {
+		if (evt.target.classList.contains('popup')) {
+			this.close();
+		}
+	}
 
-    _closeByOverlay(evt) {
-        if (evt.target.classList.contains('popup')) {
-            this.close()
-        }
-    }
+	_handlerCloseButton() {
+		this.close();
+	}
 
-    open() {
-        this._popup.classList.add('popup_opened');
-        document.addEventListener('keydown', this._closePopupEscHandler.bind(this));
-        this._popup.addEventListener('click', this._closeByOverlay.bind(this));
-    }
-    
-    close() {
-        this._popup.classList.remove('popup_opened');
-        document.removeEventListener('keydown', this._closePopupEscHandler.bind(this));
-        this._popup.removeEventListener('click', this._closeByOverlay.bind(this));
-    }
+	loading(loading) {
+		if (loading) {
+			this._submitButton.textContent = 'Сохранение...';
+		}
+		else {
+			this._submitButton.textContent = 'Сохранить';
+		}
+	}
 
-    setEventListeners() {
-        this._closeButton.addEventListener('click', () => {
-            this.close();
-        });
-    }
+	open() {
+		this._popupSelector.classList.add('popup_opened');
+		document.addEventListener('keydown', this._handlerEscClose);
+	}
 
+	close() {
+		this._popupSelector.classList.remove('popup_opened');
+		document.removeEventListener('keydown', this._handlerEscClose);
+	}
+
+	setEventListeners() {
+		this._popupSelector.addEventListener('click', this._closeByOverlay.bind(this));
+		this._closeButton.addEventListener('click', this._handlerCloseButton.bind(this));
+	}
 }
