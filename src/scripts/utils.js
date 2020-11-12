@@ -12,15 +12,15 @@ export const profileJob = document.querySelector('.profile__job');
 export const profileAvatar = document.querySelector('.profile__avatar');
 
 export const popupEditAvatar = document.querySelector('.popup_avatar-edit');
-export const popupButtonAvatar = popupEditAvatar.querySelector('.popup__save_avatar-edit');
+export const popupButtonAvatar = popupEditAvatar.querySelector('.popup__save');
 
 export const popupEditProfile = document.querySelector('.popup_edit-profile');
 export const nameInput = popupEditProfile.querySelector('.popup__input_value_name');
 export const jobInput = popupEditProfile.querySelector('.popup__input_value_job');
-export const popupEditProfileButton = popupEditProfile.querySelector('.popup__save_edit-profile');
+export const popupEditProfileButton = popupEditProfile.querySelector('.popup__save');
 
 export const popupNewPlace = document.querySelector('.popup_new-place');
-export const popupButtonNewPlace = popupNewPlace.querySelector('.popup__save_new-place'); 
+export const popupButtonNewPlace = popupNewPlace.querySelector('.popup__save'); 
 export const popupInputNewPlaceLink = popupNewPlace.querySelector('.popup__input_value_link')
 
 export const popupEditButton = document.querySelector('.profile__edit-button');

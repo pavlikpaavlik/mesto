@@ -14,7 +14,7 @@
       <main class="content">
         <section class="profile page__section">
           <div class="profile__avatar">
-            <img class="profile__photo" src="./images/Avatar.jpg" alt='Аватарка'>
+            <img class="profile__photo" alt='Аватарка' src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg"/>
             <button class="profile__avatar-button" type="button" aria-label="Редактировать"></button>
           </div>
           <div class="profile__info">
@@ -46,7 +46,7 @@
             <span class="popup__input-error" id="name-input-error"></span>
             <input type="text" class="popup__input popup__input_value_job" id="job-input" name="about" placeholder="Профессия" required minlength="2" maxlength="200">
             <span class="popup__input-error" id="job-input-error"></span>
-            <button class="popup__save popup__save_edit-profile" type="submit" name="submit">Сохранить</button>
+            <button class="popup__save" type="submit" name="submit">Сохранить</button>
           </fieldset>
           </form>
         </div>
@@ -62,7 +62,7 @@
           <span class="popup__input-error" id="place-input-error"></span>
           <input type="url" id="link-input" name="link" class="popup__input popup__input_value_link" placeholder="Ссылка на картинку" required>
           <span class="popup__input-error" id="link-input-error"></span>
-          <button type="submit" class="popup__save popup__save_new-place" value="Создать">Создать</button>
+          <button type="submit" class="popup__save" value="Создать">Создать</button>
         </fieldset>
       </form>
     </div>
@@ -78,8 +78,8 @@
     <div class="popup__container">
       <button class="popup__close-button" type="button"></button>
       <h2 class="popup__title">Вы уверены?</h2>
-      <form action="#" name="deleteCard" class="popup__form popup__form_photo-delete" novalidate></form>
-          <button type="submit" class="popup__save popup__save_photo-delete" value="Да">Да</button>
+      <form action="#" name="deleteCard" class="popup__form popup__form_photo-delete">
+          <button type="submit" class="popup__save" value="Да">Да</button>
       </form>
     </div>
   </div>
@@ -87,11 +87,11 @@
     <div class="popup__container">
       <button class="popup__close-button" type="button"></button>
       <h2 class="popup__title">Обновить аватар</h2>
-      <form action="#" name="changeAvatar" class="popup__form popup__form_avatar-change" novalidate></form>
+      <form action="#" name="changeAvatar" class="popup__form popup__form_avatar-change" novalidate>
         <fieldset class="popup__field">
           <input type="url" id="avatar-link" name="avatar" class="popup__input popup__input_value_avatar" placeholder="Ссылка на аватар" required>
           <span class="popup__input-error" id="avatar-link-error"></span>
-          <button type="submit" class="popup__save popup__save_avatar-edit" value="Сохранить">Сохранить</button>
+          <button type="submit" class="popup__save" value="Сохранить">Сохранить</button>
         </fieldset>
       </form>
     </div>
