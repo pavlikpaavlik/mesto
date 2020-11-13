@@ -9,6 +9,14 @@ import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 import PopupWithConfirm from '../components/PopupWithConfirm.js';
 
+const api = new Api({ 
+	url: 'https://mesto.nomoreparties.co/v1/cohort-17', 
+	headers: { 
+		authorization: 'ed2d6321-26d3-4222-a873-f564987e2553', 
+		'Content-Type': 'application/json', 
+	}, 
+}); 
+
 const popupEditProfileValidator = new FormValidator(settings, popupEditProfile);
 const popupNewPlaceValidator = new FormValidator(settings, popupNewPlace);
 const popupAvatarValidator = new FormValidator(settings, popupEditAvatar);
