@@ -125,7 +125,7 @@ const renderCard = (item) => {
 	addCardsList.addItem(cardElement);
 	return card;
 };
-
+// Не совсем понимаю как реализовать с одним экземпляром Section
 const addCardsList = new Section(
 	{
 		items: initialCards,
