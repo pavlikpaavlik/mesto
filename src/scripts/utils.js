@@ -9,7 +9,7 @@ const settings = ({
 
 export const profileName = document.querySelector('.profile__title');
 export const profileJob = document.querySelector('.profile__job');
-export const profileAvatar = document.querySelector('.profile__avatar');
+export const profileAvatar = document.querySelector('.profile__photo');
 
 export const popupEditAvatar = document.querySelector('.popup_avatar-edit');
 export const popupButtonAvatar = popupEditAvatar.querySelector('.popup__save');

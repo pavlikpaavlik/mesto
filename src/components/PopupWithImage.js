@@ -9,7 +9,6 @@ export default class PopupWithImage extends Popup {
 
 	open({ name, link }) {
 		super.open();
-		super.setEventListeners();
 		const image = this._popupImage;
 		const caption = this._popupCardName;
 		image.src = link;
