@@ -9,13 +9,13 @@ import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 import PopupWithConfirm from '../components/PopupWithConfirm.js';
 
-const api = new Api({ 
-	url: 'https://mesto.nomoreparties.co/v1/cohort-17', 
-	headers: { 
-		authorization: 'ed2d6321-26d3-4222-a873-f564987e2553', 
-		'Content-Type': 'application/json', 
-	}, 
-}); 
+const api = new Api({
+	url: 'https://mesto.nomoreparties.co/v1/cohort-17',
+	headers: {
+		authorization: 'ed2d6321-26d3-4222-a873-f564987e2553',
+		'Content-Type': 'application/json',
+	},
+});
 
 const popupEditProfileValidator = new FormValidator(settings, popupEditProfile);
 const popupNewPlaceValidator = new FormValidator(settings, popupNewPlace);
@@ -34,31 +34,36 @@ const userProfile = new UserInfo({
 	avatar: profileAvatar,
 });
 
+
+const renderCard = (item) => {
+	const card = new Card(
+		{
+			data: item,
+			handleCardClick: globalHandleCardClick,
+			handleLikeClick: globalHandleLikeCardClick,
+			handleDeleteButtonClick: globalHandleDeleteCardClick,
+		},
+		userProfile.getUserId(),
+		'#template-card',
+	);
+
+	return card.generateCard();
+};
+
+const cardsList = new Section(
+	{
+		items: initialCards,
+		renderer: renderCard,
+	},
+	'.grid-elements',
+);
+
 Promise.all([api.getUserInfo(), api.getInitialCards()])
 	.then((values) => {
 		const [userData, items] = values;
 		userProfile.setUserData(userData.name, userData.about, userData._id, userData.avatar);
-		const initialCardList = new Section(
-			{
-				items: items,
-				renderer: (item) => {
-					const card = new Card(
-						{
-							data: item,
-							handleCardClick: globalHandleCardClick,
-							handleLikeClick: globalHandleLikeCardClick,
-							handleDeleteButtonClick: globalHandleDeleteCardClick,
-						},
-						userProfile.getUserId(),
-						'#template-card',
-					);
-					const cardElement = card.generateCard();
-					initialCardList.setItem(cardElement);
-				},
-			},
-			'.grid-elements',
-		);
-		initialCardList.renderItems();
+
+		items.forEach((item) => cardsList.addItem(item));
 	})
 	.catch((err) => {
 		console.log(err);
@@ -110,29 +115,6 @@ const globalHandleDeleteCardClick = (card) => {
 	});
 };
 
-const renderCard = (item) => {
-	const card = new Card(
-		{
-			data: item,
-			handleCardClick: globalHandleCardClick,
-			handleLikeClick: globalHandleLikeCardClick,
-			handleDeleteButtonClick: globalHandleDeleteCardClick,
-		},
-		userProfile.getUserId(),
-		'#template-card',
-	);
-	const cardElement = card.generateCard();
-	addCardsList.addItem(cardElement);
-	return card;
-};
-// Не совсем понимаю как реализовать с одним экземпляром Section
-const addCardsList = new Section(
-	{
-		items: initialCards,
-	},
-	'.grid-elements',
-);
-
 const cardPopup = new PopupWithForm(
 	{
 		handleFormSubmit: (item) => {
@@ -140,7 +122,7 @@ const cardPopup = new PopupWithForm(
 			api
 				.postNewCard(item)
 				.then((item) => {
-					renderCard(item);
+					cardsList.addItem(item);
 					cardPopup.close();
 				})
 				.catch((err) => console.log(err))
